@@ -1,0 +1,38 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+DROP SCHEMA IF EXISTS `bump` ;
+CREATE SCHEMA IF NOT EXISTS `bump` DEFAULT CHARACTER SET latin1 ;
+USE `bump` ;
+
+-- -----------------------------------------------------
+-- Table `bump`.`register`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bump`.`register` ;
+
+CREATE  TABLE IF NOT EXISTS `bump`.`register` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `register_id` VARCHAR(8) NOT NULL ,
+  `first_name` VARCHAR(64) NOT NULL ,
+  `last_name` VARCHAR(64) NOT NULL ,
+  `email` VARCHAR(32) NOT NULL ,
+  `phone` VARCHAR(16) NULL DEFAULT NULL ,
+  `newsletter` TINYINT(1) NOT NULL ,
+  `address` VARCHAR(128) NULL DEFAULT NULL ,
+  `address_suffix` VARCHAR(8) NULL DEFAULT NULL ,
+  `city` VARCHAR(32) NULL DEFAULT NULL ,
+  `state` VARCHAR(2) NULL DEFAULT NULL ,
+  `zip` VARCHAR(8) NULL DEFAULT NULL ,
+  `created` DATETIME NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  UNIQUE INDEX `register_id_UNIQUE` (`register_id` ASC) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
